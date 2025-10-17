@@ -1,0 +1,17 @@
+# Development-only Dockerfile
+FROM node:20-alpine
+
+# Create app directory
+WORKDIR /app
+
+
+# Copy manifests for context (not used for install)
+COPY package.json package-lock.json* ./
+
+# The source will be mounted; minimal copy fallback
+COPY . ./
+
+EXPOSE 8086
+
+# Install dependencies at container startup, then run dev server
+CMD ["sh", "-c", "npm install && npm run dev"]

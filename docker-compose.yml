@@ -1,0 +1,12 @@
+services:
+  showcase:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: showcase-dev
+    ports:
+      - "8086:8086"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
