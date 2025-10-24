@@ -2,11 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --brand-bg: #0f1115;
-  --brand-fg: #ffffff;
-  --brand-accent: #3b82f6;
-  --brand-subtle: #1f2329;
+  --brand-bg: #F5F7FA;
+  --brand-fg: #222B45;
+  --brand-accent: #003366;
+  --brand-accent2: #009FE3;
+  --brand-card: #FFFFFF;
+  --brand-card-shadow: rgba(0, 51, 102, 0.08);
+  --brand-header-bg: #003366;
+  --brand-header-fg: #FFFFFF;
+  --brand-link: #009FE3;
+  --brand-border: #E4E9F2;
+  --brand-font: Montserrat, Open Sans, Arial, sans-serif;
 }
 
 html, body, #root {
@@ -15,23 +23,51 @@ html, body, #root {
 body {
   background: var(--brand-bg);
   color: var(--brand-fg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--brand-font);
   -webkit-font-smoothing: antialiased;
 }
 
 /* Scrollbar minimal styling */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--brand-bg); }
-::-webkit-scrollbar-thumb { background: var(--brand-subtle); border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: var(--brand-accent); }
+::-webkit-scrollbar-thumb { background: var(--brand-border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-accent2); }
 
-/* Reusable utility classes */
+/* ERNI Card style */
+.erni-card {
+  background: var(--brand-card);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 var(--brand-card-shadow);
+  border: 1px solid var(--brand-border);
+}
+
+/* ERNI Header style */
+.erni-header {
+  background: var(--brand-header-bg);
+  color: var(--brand-header-fg);
+  font-family: var(--brand-font);
+  border-bottom: 2px solid var(--brand-accent2);
+}
+
+/* ERNI Link style */
+.erni-link {
+  color: var(--brand-link);
+  text-decoration: underline;
+  font-weight: 500;
+}
+.erni-link:hover {
+  color: var(--brand-accent2);
+}
+
+/* App grid utility */
 .app-grid {
   @apply grid gap-6 sm:gap-7 md:gap-8;
 }
 
+/* ERNI gradient text for logo */
 .brand-gradient-text {
-  background: linear-gradient(90deg, var(--brand-accent), #60a5fa);
+  background: linear-gradient(90deg, var(--brand-accent2), var(--brand-accent));
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
