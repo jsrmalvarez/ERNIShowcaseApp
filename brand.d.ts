@@ -23,7 +23,6 @@ export declare const brand: {
         readonly gridGap: "1.5rem";
         readonly borderRadius: "0.75rem";
     };
-    readonly initialApps: DemoApp[];
 };
 export type DemoApp = {
     id: string;
