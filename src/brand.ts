@@ -5,8 +5,12 @@ export const brand = {
   tagline: 'Discover our innovative demo applications',
   
   // Visual Identity
-  logo: '/ERNIShowcaseApp/assets/ERNI_logo_color-2048x532.png',
-  favicon: '/ERNIShowcaseApp/assets/favicon.png',
+  logo: process.env.NODE_ENV === 'production' 
+    ? '/ERNIShowcaseApp/assets/ERNI_logo_color-2048x532.png'
+    : '/assets/ERNI_logo_color-2048x532.png',
+  favicon: process.env.NODE_ENV === 'production' 
+    ? '/ERNIShowcaseApp/assets/favicon.png'
+    : '/assets/favicon.png',
   
   // Color Palette (CSS custom properties will be set based on these)
   colors: {

@@ -16,8 +16,11 @@ const App: React.FC = () => {
     setIsAdminMode(!isAdminMode);
   };
 
+  // Use different basename for development vs production
+  const basename = process.env.NODE_ENV === 'production' ? '/ERNIShowcaseApp' : '';
+
   return (
-    <Router basename="/ERNIShowcaseApp">
+    <Router basename={basename}>
       <Routes>
         <Route 
           path="/" 

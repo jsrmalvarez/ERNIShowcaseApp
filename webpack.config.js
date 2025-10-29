@@ -1,13 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+  
+  return {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
     clean: true,
-    publicPath: '/ERNIShowcaseApp/',
+    publicPath: isProduction ? '/ERNIShowcaseApp/' : '/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -36,7 +39,15 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: './dist',
+    static: [
+      {
+        directory: './dist',
+      },
+      {
+        directory: './public',
+        publicPath: '/',
+      }
+    ],
     hot: true,
     open: true,
     port: 3001,
@@ -47,4 +58,5 @@ module.exports = {
       chunks: 'all',
     },
   },
+};
 };
