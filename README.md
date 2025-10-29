@@ -164,6 +164,13 @@ src/
 ├── brand.ts            # Branding and theme configuration
 ├── index.tsx           # Application entry point
 └── index.css           # Global styles and Tailwind imports
+
+public/
+├── assets/             # Static assets (logo, favicon)
+│   ├── ERNI_logo_color-2048x532.png
+│   └── favicon.png
+├── index.html          # HTML template
+└── manifest.json       # PWA manifest
 ```
 
 ## 🎯 Accessibility Features
