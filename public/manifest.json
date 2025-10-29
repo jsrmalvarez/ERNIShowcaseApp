@@ -1,0 +1,16 @@
+{
+  "name": "ERNI Showcase",
+  "short_name": "ERNI Showcase",
+  "description": "Discover our innovative demo applications",
+  "start_url": "/ERNIShowcaseApp/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#0070f3",
+  "icons": [
+    {
+      "src": "/ERNIShowcaseApp/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
