@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/brand.ts","./src/main.tsx","./src/components/appcard.tsx","./src/components/appgrid.tsx","./src/components/brandheader.tsx","./src/pages/adminpage.tsx","./src/store/useappsstore.ts"],"version":"5.9.3"}

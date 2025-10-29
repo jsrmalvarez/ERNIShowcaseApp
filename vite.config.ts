@@ -8,6 +8,7 @@ export default defineConfig({
     port: 8086,
     host: true
   },
+  base: '/ERNIShowcaseApp/',
   resolve: {
     alias: {
       '@brand': resolve(__dirname, 'src/brand.ts'),
