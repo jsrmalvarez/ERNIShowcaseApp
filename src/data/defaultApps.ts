@@ -8,9 +8,46 @@ export type DemoApp = {
   image?: string;
   tags: string[];
 };
+// image: (process.env.NODE_ENV === 'production' ? '/ERNIShowcaseApp' : '') + '/assets/ERNI_logo_color-2048x532.png',
 
 // Default demo applications for the showcase
 export const defaultApps: DemoApp[] = [
+  {
+    id: '10',
+    name: 'ERNI Aida',
+    url: 'https://aida.erni/',
+    description: 'A multimodal chatbox with RAG capabilities',
+    icon: '📊',
+    image: (process.env.NODE_ENV === 'production' ? '/ERNIShowcaseApp' : '') + '/assets/app_covers/ERNIAida.png',
+    tags: ['LLM', 'Langchain', 'Python'],
+  },
+  {
+    id: '11',
+    name: 'OffiMan ',
+    url: 'https://offiman-dev.azurewebsites.net/esp-vlc',
+    description: 'A dashboard to control office attendance, expenses, inventory, suggestions, notices...',
+    icon: '📊',
+    image: (process.env.NODE_ENV === 'production' ? '/ERNIShowcaseApp' : '') + '/assets/app_covers/Offiman.png',
+    tags: ['Java', 'Azure IoT', 'Angular', 'PostgreSQL'],
+  },
+  {
+    id: '12',
+    name: 'OffiMan Embedded',
+    url: 'https://erniegh-my.sharepoint.com/:v:/g/personal/joseramon_alvarez_betterask_erni/EYIJ7NyMwFBElQWAlDrI98gBsy10Dqaj44JFJlt922OoNQ?e=ZZb6is',
+    description: 'Touchscreen device to control your office appliances',
+    icon: '📊',
+    image: (process.env.NODE_ENV === 'production' ? '/ERNIShowcaseApp' : '') + '/assets/app_covers/OffimanEmbedded.png',
+    tags: ['C++', 'IoT', 'Qt', 'ZigBee', 'Linux'],
+  }, 
+    {
+    id: '13',
+    name: 'SuperArte',
+    url: 'https://www.youtube.com/watch?v=6F7CQszw2Og',
+    description: 'Enable disabled people to play piano with Robotics and Genetic algorithms',
+    icon: '📊',
+    image: (process.env.NODE_ENV === 'production' ? '/ERNIShowcaseApp' : '') + '/assets/app_covers/SuperArte.png',
+    tags: ['C++', 'Python', 'Robotics', 'HMI'],
+  },   
   {
     id: '1',
     name: 'React Dashboard',
