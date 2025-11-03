@@ -5,6 +5,7 @@ export type DemoApp = {
   url: string;
   description?: string;
   icon?: string;
+  image?: string;
   tags: string[];
 };
 
@@ -16,6 +17,7 @@ export const defaultApps: DemoApp[] = [
     url: 'https://react-dashboard-demo.netlify.app',
     description: 'A comprehensive dashboard built with React and Chart.js',
     icon: '📊',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&auto=format',
     tags: ['react', 'dashboard', 'charts'],
   },
   {
@@ -24,6 +26,7 @@ export const defaultApps: DemoApp[] = [
     url: 'https://vue-portfolio-demo.netlify.app',
     description: 'A stunning portfolio website created with Vue.js',
     icon: '🎨',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop&auto=format',
     tags: ['vue', 'portfolio', 'design'],
   },
   {
@@ -40,6 +43,7 @@ export const defaultApps: DemoApp[] = [
     url: 'https://nextjs-blog-demo.netlify.app',
     description: 'A modern blog platform powered by Next.js and Markdown',
     icon: '📝',
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68e2c6b81d?w=400&h=300&fit=crop&auto=format',
     tags: ['nextjs', 'blog', 'markdown'],
   },
   {
@@ -56,6 +60,7 @@ export const defaultApps: DemoApp[] = [
     url: 'https://expo.dev/@demo/react-native-app',
     description: 'Cross-platform mobile app showcasing React Native capabilities',
     icon: '📱',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop&auto=format',
     tags: ['react-native', 'mobile', 'cross-platform'],
   },
 ];

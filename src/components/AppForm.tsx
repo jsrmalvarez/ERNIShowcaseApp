@@ -20,6 +20,7 @@ export const AppForm: React.FC<AppFormProps> = ({
     url: '',
     description: '',
     icon: '',
+    image: '',
     tags: '',
   });
   
@@ -34,6 +35,7 @@ export const AppForm: React.FC<AppFormProps> = ({
         url: editingApp.url || '',
         description: editingApp.description || '',
         icon: editingApp.icon || '',
+        image: editingApp.image || '',
         tags: editingApp.tags?.join(', ') || '',
       });
     } else {
@@ -43,6 +45,7 @@ export const AppForm: React.FC<AppFormProps> = ({
         url: '',
         description: '',
         icon: '',
+        image: '',
         tags: '',
       });
     }
@@ -83,6 +86,7 @@ export const AppForm: React.FC<AppFormProps> = ({
         url: formData.url.trim(),
         description: formData.description.trim() || undefined,
         icon: formData.icon.trim() || undefined,
+        image: formData.image.trim() || undefined,
         tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0),
       };
       
@@ -99,6 +103,7 @@ export const AppForm: React.FC<AppFormProps> = ({
           url: '',
           description: '',
           icon: '',
+          image: '',
           tags: '',
         });
       }
@@ -185,7 +190,25 @@ export const AppForm: React.FC<AppFormProps> = ({
             maxLength={2}
           />
           <p className="text-gray-500 text-sm mt-1">
-            Use an emoji to represent your app
+            Use an emoji to represent your app (fallback if no image)
+          </p>
+        </div>
+
+        {/* Image */}
+        <div>
+          <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
+            Image URL
+          </label>
+          <input
+            type="url"
+            id="image"
+            value={formData.image}
+            onChange={(e) => handleChange('image', e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="https://images.unsplash.com/photo-..."
+          />
+          <p className="text-gray-500 text-sm mt-1">
+            Optional preview image URL (displays above icon)
           </p>
         </div>
 
