@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { DemoApp, brand } from '../brand';
+import { DemoApp } from '../brand';
+import { defaultApps } from '../data/defaultApps';
 
 interface AppStore {
   // State
@@ -36,7 +37,7 @@ const loadAppsFromStorage = (): DemoApp[] => {
   } catch (error) {
     console.warn('Failed to load apps from localStorage:', error);
   }
-  return [...brand.initialApps];
+  return [...defaultApps];
 };
 
 // Save apps to localStorage
@@ -102,8 +103,8 @@ export const useAppStore = create<AppStore>((set, get) => ({
   },
   
   resetToDefaults: () => {
-    const defaultApps = [...brand.initialApps];
-    set({ apps: defaultApps });
-    saveAppsToStorage(defaultApps);
+    const resetApps = [...defaultApps];
+    set({ apps: resetApps });
+    saveAppsToStorage(resetApps);
   },
 }));

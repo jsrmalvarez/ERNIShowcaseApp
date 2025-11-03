@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppStore } from '../store/appStore';
 import { DemoApp } from '../brand';
 
@@ -16,14 +16,36 @@ export const AppForm: React.FC<AppFormProps> = ({
   const { addApp, updateApp } = useAppStore();
   
   const [formData, setFormData] = useState({
-    name: editingApp?.name || '',
-    url: editingApp?.url || '',
-    description: editingApp?.description || '',
-    icon: editingApp?.icon || '',
+    name: '',
+    url: '',
+    description: '',
+    icon: '',
   });
   
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Update form data when editingApp changes
+  useEffect(() => {
+    if (editingApp) {
+      setFormData({
+        name: editingApp.name || '',
+        url: editingApp.url || '',
+        description: editingApp.description || '',
+        icon: editingApp.icon || '',
+      });
+    } else {
+      // Reset form when not editing
+      setFormData({
+        name: '',
+        url: '',
+        description: '',
+        icon: '',
+      });
+    }
+    // Clear any existing errors when switching apps
+    setErrors({});
+  }, [editingApp]);
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
