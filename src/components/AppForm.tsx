@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAppStore } from '../store/appStore';
-import { DemoApp } from '../brand';
+import { DemoApp } from '../data/defaultApps';
 
 interface AppFormProps {
   editingApp?: DemoApp | null;
@@ -20,6 +20,7 @@ export const AppForm: React.FC<AppFormProps> = ({
     url: '',
     description: '',
     icon: '',
+    tags: '',
   });
   
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -33,6 +34,7 @@ export const AppForm: React.FC<AppFormProps> = ({
         url: editingApp.url || '',
         description: editingApp.description || '',
         icon: editingApp.icon || '',
+        tags: editingApp.tags?.join(', ') || '',
       });
     } else {
       // Reset form when not editing
@@ -41,9 +43,9 @@ export const AppForm: React.FC<AppFormProps> = ({
         url: '',
         description: '',
         icon: '',
+        tags: '',
       });
     }
-    // Clear any existing errors when switching apps
     setErrors({});
   }, [editingApp]);
 
@@ -81,6 +83,7 @@ export const AppForm: React.FC<AppFormProps> = ({
         url: formData.url.trim(),
         description: formData.description.trim() || undefined,
         icon: formData.icon.trim() || undefined,
+        tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0),
       };
       
       if (editingApp) {
@@ -96,6 +99,7 @@ export const AppForm: React.FC<AppFormProps> = ({
           url: '',
           description: '',
           icon: '',
+          tags: '',
         });
       }
       
@@ -182,6 +186,24 @@ export const AppForm: React.FC<AppFormProps> = ({
           />
           <p className="text-gray-500 text-sm mt-1">
             Use an emoji to represent your app
+          </p>
+        </div>
+
+        {/* Tags */}
+        <div className="md:col-span-2">
+          <label htmlFor="tags" className="block text-sm font-medium text-gray-700 mb-2">
+            Tags
+          </label>
+          <input
+            type="text"
+            id="tags"
+            value={formData.tags}
+            onChange={(e) => handleChange('tags', e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="react, dashboard, charts"
+          />
+          <p className="text-gray-500 text-sm mt-1">
+            Comma-separated tags for filtering (e.g., react, dashboard, charts)
           </p>
         </div>
 

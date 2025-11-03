@@ -3,7 +3,7 @@ import { Header } from '../components/Header';
 import { AppForm } from '../components/AppForm';
 import { AppGrid } from '../components/AppGrid';
 import { useAppStore } from '../store/appStore';
-import { DemoApp } from '../brand';
+import { DemoApp } from '../data/defaultApps';
 
 interface AdminPageProps {
   onToggleAdminMode: () => void;

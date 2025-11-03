@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { DemoApp } from '../brand';
+import { DemoApp } from '../data/defaultApps';
 import { defaultApps } from '../data/defaultApps';
 
 interface AppStore {
@@ -31,11 +31,27 @@ const loadAppsFromStorage = (): DemoApp[] => {
     if (stored) {
       const parsed = JSON.parse(stored);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+        // Validate that each app has the required structure
+        const validApps = parsed.filter(app => 
+          app && 
+          typeof app === 'object' && 
+          typeof app.id === 'string' && 
+          typeof app.name === 'string' &&
+          Array.isArray(app.tags)
+        );
+        if (validApps.length > 0) {
+          return validApps;
+        }
       }
     }
   } catch (error) {
     console.warn('Failed to load apps from localStorage:', error);
+    // Clear corrupted data
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (clearError) {
+      console.warn('Failed to clear corrupted localStorage:', clearError);
+    }
   }
   return [...defaultApps];
 };

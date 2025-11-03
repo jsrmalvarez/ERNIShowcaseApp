@@ -39,13 +39,7 @@ export const brand = {
   },
 } as const;
 
-export type DemoApp = {
-  id: string;
-  name: string;
-  url: string;
-  description?: string;
-  icon?: string;
-};
+// DemoApp type moved to data/defaultApps.ts
 
 // Apply CSS custom properties for easy theming
 export const applyCSSVariables = (): void => {

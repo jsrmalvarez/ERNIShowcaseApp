@@ -2,16 +2,19 @@ import React from 'react';
 import { useAppStore } from '../store/appStore';
 import { AppCard } from './AppCard';
 
+
+import { DemoApp } from '../data/defaultApps';
+
 interface AppGridProps {
   isAdminMode?: boolean;
   onEditApp?: (appId: string) => void;
+  apps?: DemoApp[];
 }
 
-export const AppGrid: React.FC<AppGridProps> = ({ 
-  isAdminMode = false, 
-  onEditApp 
-}) => {
-  const { apps, removeApp } = useAppStore();
+export const AppGrid: React.FC<AppGridProps> = ({ isAdminMode = false, onEditApp, apps }) => {
+  const store = useAppStore();
+  const appList = apps !== undefined ? apps : store.apps;
+  const removeApp = store.removeApp;
 
   const handleDeleteApp = (appId: string, appName: string) => {
     if (window.confirm(`Are you sure you want to delete "${appName}"?`)) {
@@ -19,7 +22,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
     }
   };
 
-  if (apps.length === 0) {
+  if (appList.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
         <div className="text-6xl mb-4">📱</div>
@@ -42,7 +45,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
       role="grid"
       aria-label={isAdminMode ? "Demo applications management grid" : "Demo applications grid"}
     >
-      {apps.map((app) => (
+  {appList.map((app) => (
         <div key={app.id} role="gridcell">
           <AppCard
             app={app}
