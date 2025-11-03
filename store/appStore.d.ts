@@ -1,4 +1,4 @@
-import { DemoApp } from '../brand';
+import { DemoApp } from '../data/defaultApps';
 interface AppStore {
     apps: DemoApp[];
     isLoading: boolean;

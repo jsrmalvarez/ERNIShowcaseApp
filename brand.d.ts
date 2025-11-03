@@ -24,11 +24,4 @@ export declare const brand: {
         readonly borderRadius: "0.75rem";
     };
 };
-export type DemoApp = {
-    id: string;
-    name: string;
-    url: string;
-    description?: string;
-    icon?: string;
-};
 export declare const applyCSSVariables: () => void;
